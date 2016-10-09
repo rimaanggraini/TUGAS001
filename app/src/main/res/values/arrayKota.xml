@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kotaTujuan">
+        <item>Malang</item>
+        <item>Surabaya</item>
+        <item>Sidoarjo</item>
+        <item>Pasuruan</item>
+    </string-array>
+</resources>
