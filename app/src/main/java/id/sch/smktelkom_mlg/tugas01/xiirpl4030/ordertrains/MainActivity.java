@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             Ka = Rb.getText().toString();
         }
         String kt = spKt.getSelectedItem().toString();
-        String h = "Jumlah Tiket:";
+        String h = "/nJumlah Tiket:";
         int starlen = hasil.length();
         if (CBA.isChecked()) h += CBA.getText();
         if (CBB.isChecked()) h += CBB.getText();
