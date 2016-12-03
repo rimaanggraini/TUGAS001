@@ -47,23 +47,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doProcess() {
-        String tamnama = nama.getText().toString();
-        int lah = Integer.parseInt(tahun.getText().toString());
-        int usia = 2016 - lah;
-        String Ka = null;
-        if (RG.getCheckedRadioButtonId() != -1) {
-            RadioButton Rb = (RadioButton) findViewById(RG.getCheckedRadioButtonId());
-            Ka = Rb.getText().toString();
-        }
-        String kt = spKt.getSelectedItem().toString();
-        String h = "/nJumlah Tiket:";
-        int starlen = hasil.length();
-        if (CBA.isChecked()) h += CBA.getText();
-        if (CBB.isChecked()) h += CBB.getText();
-        if (CBC.isChecked()) h += CBC.getText();
+        if (isValid()) {
+            String tamnama = nama.getText().toString();
+            int lah = Integer.parseInt(tahun.getText().toString());
+            int usia = 2016 - lah;
+            String Ka = null;
+            if (RG.getCheckedRadioButtonId() != -1) {
+                RadioButton Rb = (RadioButton) findViewById(RG.getCheckedRadioButtonId());
+                Ka = Rb.getText().toString();
+            }
+            String kt = spKt.getSelectedItem().toString();
+            String h = "Jumlah Tiket:";
+            int starlen = hasil.length();
+            if (CBA.isChecked()) h += CBA.getText();
+            if (CBB.isChecked()) h += CBB.getText();
+            if (CBC.isChecked()) h += CBC.getText();
 
-        if (h.length() == starlen) h += "Anda Harus Memilih";
-        hasil.setText("List Pembelian\n" + "Nama : " + tamnama + "\nUmur : " + usia + "\nKota Asal : " + Ka + "\nKota Tujuan : " + kt + h + "\nTransaksi Berhasil Diproses");
+            if (h.length() == starlen) h += "Anda Harus Memilih";
+            hasil.setText("List Pembelian\n" + "Nama : " + tamnama + "\nUmur : " + usia + "\nKota Asal : " + Ka + "\nKota Tujuan : " + kt + "\n" + h + "\nTransaksi Berhasil Diproses");
+        }
+    }
+
+    private boolean isValid() {
+        boolean valid = true;
+
+        String tamnama = nama.getText().toString();
+        String lah = tahun.getText().toString();
+
+        if (tamnama.isEmpty()) {
+            nama.setError("Nama Harus Diisi");
+            valid = false;
+        } else if (nama.length() < 3) {
+            nama.setError("Nama Minimal 3 Karakter");
+            valid = false;
+        } else {
+            nama.setError(null);
+        }
+        if (lah.isEmpty()) {
+            tahun.setError("Tahun Lahir Harus Di isi");
+            valid = false;
+        } else if (nama.length() != 4) {
+            tahun.setError("Format tahun Lahir bukan yyyy");
+            valid = false;
+        } else {
+            tahun.setError(null);
+        }
+        return valid;
     }
 
 }
