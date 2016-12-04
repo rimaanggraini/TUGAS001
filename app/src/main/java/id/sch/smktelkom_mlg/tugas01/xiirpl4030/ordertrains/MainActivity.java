@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             valid = false;
         } else {
             nama.setError(null);
+
         }
         if (lah.isEmpty()) {
             tahun.setError("Tahun Lahir Harus Di isi");
